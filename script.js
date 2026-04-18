@@ -100,6 +100,126 @@ function initializeProjectFilter() {
   });
 }
 
+// 숫자를 보기 좋게 바꾸는 함수
+function formatCount(value) {
+  return Number(value).toLocaleString("en-US");
+}
+
+// GitHub 프로필 HTML을 만드는 함수
+function createGitHubProfileMarkup(profile) {
+  return `
+    <article class="github-profile-panel">
+      <div class="github-avatar">
+        <img src="${profile.avatar_url}" alt="GitHub profile image of ${profile.login}">
+      </div>
+      <div class="github-profile-text">
+        <p class="github-tag">Profile</p>
+        <h3>${profile.name || profile.login}</h3>
+        <p class="github-description">${profile.bio || "No bio available."}</p>
+        <div class="repo-meta">
+          <span class="repo-chip">Public Repos ${formatCount(profile.public_repos)}</span>
+          <span class="repo-chip">Followers ${formatCount(profile.followers)}</span>
+          <span class="repo-chip">Following ${formatCount(profile.following)}</span>
+        </div>
+      </div>
+      <a class="pill-link github-link-button" href="${profile.html_url}" target="_blank" rel="noopener noreferrer">
+        Visit Profile
+      </a>
+    </article>
+  `;
+}
+
+// 저장소 설명 문장을 만드는 함수
+function getRepositoryDescription(repo) {
+  if (repo.description) {
+    return repo.description;
+  }
+
+  return "No description available.";
+}
+
+// 저장소 카드 HTML을 만드는 함수
+function createRepositoryMarkup(repo) {
+  return `
+    <article class="github-repo-row">
+      <div class="repo-main">
+        <h4>${repo.name}</h4>
+        <p>${getRepositoryDescription(repo)}</p>
+        <div class="repo-meta">
+          <span class="repo-chip">Language ${repo.language || "N/A"}</span>
+          <span class="repo-chip">Stars ${formatCount(repo.stargazers_count)}</span>
+          <span class="repo-chip">Forks ${formatCount(repo.forks_count)}</span>
+        </div>
+        <a class="pill-link repo-link" href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
+          View Repository
+        </a>
+      </div>
+      <p class="repo-tag">Public</p>
+    </article>
+  `;
+}
+
+// 저장소 목록 HTML을 만드는 함수
+function createRepositorySectionMarkup(repositories) {
+  const repoCards = repositories
+    .sort((firstRepo, secondRepo) => secondRepo.stargazers_count - firstRepo.stargazers_count)
+    .map((repo) => createRepositoryMarkup(repo))
+    .join("");
+
+  return `
+    <div class="github-repo-section">
+      <div class="github-repo-header">
+        <p class="github-tag">Repositories</p>
+        <h3>Only public repositories are shown here.</h3>
+      </div>
+      <div class="github-repo-list">
+        ${repoCards}
+      </div>
+    </div>
+  `;
+}
+
+// GitHub API에서 프로필과 저장소 데이터를 불러오는 함수
+async function fetchGitHubData(username) {
+  const profileResponse = await fetch(`https://api.github.com/users/${username}`);
+  const repoResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=20`);
+
+  if (!profileResponse.ok || !repoResponse.ok) {
+    throw new Error("Failed to load GitHub data.");
+  }
+
+  const profile = await profileResponse.json();
+  const repositories = await repoResponse.json();
+
+  return { profile, repositories };
+}
+
+// GitHub 페이지 동적 데이터 시작 함수
+async function initializeGitHubSection() {
+  const githubShell = document.querySelector(".github-data-shell");
+
+  // GitHub 페이지가 아니면 종료
+  if (!githubShell) {
+    return;
+  }
+
+  const githubUsername = githubShell.dataset.githubUsername;
+  const statusMessage = githubShell.querySelector(".github-status-message");
+  const profileRoot = githubShell.querySelector(".github-profile-root");
+  const repoRoot = githubShell.querySelector(".github-repo-root");
+
+  try {
+    const { profile, repositories } = await fetchGitHubData(githubUsername);
+
+    profileRoot.innerHTML = createGitHubProfileMarkup(profile);
+    repoRoot.innerHTML = createRepositorySectionMarkup(repositories);
+    statusMessage.textContent = "GitHub data loaded successfully.";
+  } catch (error) {
+    statusMessage.textContent = "Unable to load GitHub data right now. Please try again later.";
+    statusMessage.classList.add("error");
+  }
+}
+
 // 페이지가 모두 읽힌 뒤 실행
 document.addEventListener("DOMContentLoaded", () => {
   // 테마 버튼 선택
@@ -126,4 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 프로젝트 필터 기능 실행
   initializeProjectFilter();
+
+  // GitHub API 데이터 불러오기
+  initializeGitHubSection();
 });

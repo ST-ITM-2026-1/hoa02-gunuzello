@@ -638,6 +638,18 @@ body.night-theme .contact-button:hover {
   background-color: #4c86de; /* hover 시 더 밝게 */
 }
 /* GitHub */
+.github-data-shell {
+  display: grid; /* 상태 문구, 프로필, 저장소 영역 정렬 */
+  gap: 24px; /* 영역 사이 간격 */
+}
+.github-status-message {
+  margin: 0; /* 기본 여백 제거 */
+  color: var(--text-soft); /* 안내 문구 색상 */
+  font-weight: 700; /* 안내 문구 강조 */
+}
+.github-status-message.error {
+  color: #c94b5d; /* 에러 문구 색상 */
+}
 .github-profile-panel {
   margin-bottom: 30px; /* 아래 영역과 간격 */
   padding: 24px 26px; /* 패널 안쪽 여백 */
@@ -701,11 +713,34 @@ body.night-theme .contact-button:hover {
   align-items: flex-start; /* 위쪽 기준 정렬 */
   gap: 18px; /* 요소 사이 간격 */
 }
+.repo-meta {
+  display: flex; /* 보조 정보를 가로로 정렬 */
+  flex-wrap: wrap; /* 좁아지면 줄바꿈 */
+  gap: 10px; /* 칩 사이 간격 */
+  margin-top: 10px; /* 설명 아래 간격 */
+}
+.repo-chip {
+  display: inline-block; /* 내용만큼만 너비 사용 */
+  padding: 5px 10px; /* 칩 안쪽 여백 */
+  border-radius: 999px; /* 둥근 칩 모양 */
+  background-color: rgba(102, 148, 224, 0.12); /* 연한 칩 배경 */
+  color: var(--title-blue); /* 칩 글자색 */
+  font-size: 0.82rem; /* 작은 글자 크기 */
+  font-weight: 700; /* 칩 글자 강조 */
+}
+.repo-link {
+  display: inline-block; /* 링크를 버튼처럼 보이게 */
+  margin-top: 12px; /* 위쪽 간격 */
+}
 .repo-main h4 {
   margin: 0 0 6px;
   color: var(--title-blue);
   font-size: 1.02rem;
   text-align: left;
+}
+body.night-theme .repo-chip {
+  background-color: rgba(114, 168, 255, 0.16); /* dark 칩 배경 */
+  color: #dceaff; /* dark 칩 글자색 */
 }
 /* 반응형: 태블릿 */
 @media (max-width: 768px) {

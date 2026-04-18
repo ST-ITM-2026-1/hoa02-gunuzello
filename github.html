@@ -47,125 +47,16 @@
     <section class="page-panel">
       <h2 class="page-title">GitHub</h2>
       
-      <!-- GitHub 프로필 요약 -->
-      <article class="github-profile-panel">
-        <!-- GitHub 프로필 사진 -->
-        <div class="github-avatar">
-          <img src="image/github.png" alt="GitHub profile image of gunuzello">
-        </div>
+      <!-- JavaScript가 GitHub 데이터를 채워 넣는 영역 -->
+      <div class="github-data-shell" data-github-username="gunuzello">
+        <!-- 로딩/에러 문구 -->
+        <p class="github-status-message">Loading GitHub data...</p>
 
-        <div class="github-profile-text">
-          <p class="github-tag">Profile</p>
-          <h3>gunuzello</h3>
-          <p class="github-description">
-            I use GitHub to organize projects, study records, and team collaboration.
-          </p>
-        </div>
-        <!-- 새 탭으로 GitHub 프로필 열기 -->
-        <a class="pill-link github-link-button" href="https://github.com/gunuzello" target="_blank" rel="noopener noreferrer">
-          Visit Profile
-        </a>
-      </article>
+        <!-- 프로필 정보가 들어갈 영역 -->
+        <div class="github-profile-root"></div>
 
-      <!-- 공개 저장소 섹션 -->
-      <div class="github-repo-section">
-        <div class="github-repo-header">
-          <p class="github-tag">Repositories</p>
-          <h3>Only public repositories are shown here.</h3>
-        </div>
-
-        <!-- 공개 저장소 목록 -->
-        <div class="github-repo-list">
-          <!-- 공개 저장소 항목 -->
-          <article class="github-repo-row">
-            <div class="repo-main">
-              <h4>2025_Solution_Challenge_Team4</h4>
-              <p>Forked repository updated on February 18, 2025.</p>
-            </div>
-            <p class="repo-tag">Public</p>
-          </article>
-
-          <!-- 공개 저장소 항목 -->
-          <article class="github-repo-row">
-            <div class="repo-main">
-              <h4>GDGoc-BE</h4>
-              <p>Java repository updated on January 9, 2025.</p>
-            </div>
-            <p class="repo-tag">Public</p>
-          </article>
-
-          <!-- 공개 저장소 항목 -->
-          <article class="github-repo-row">
-            <div class="repo-main">
-              <h4>gunuzello</h4>
-              <p>Public repository updated on December 19, 2025.</p>
-            </div>
-            <p class="repo-tag">Public</p>
-          </article>
-
-          <!-- 공개 저장소 항목 -->
-          <article class="github-repo-row">
-            <div class="repo-main">
-              <h4>ITM2-2_OSS_teamproject_GMBBD</h4>
-              <p>Forked Java repository with MIT License, updated on December 12, 2025.</p>
-            </div>
-            <p class="repo-tag">Public</p>
-          </article>
-
-          <!-- 공개 저장소 항목 -->
-          <article class="github-repo-row">
-            <div class="repo-main">
-              <h4>CheckMate</h4>
-              <p>Forked repository for the 2025F ITM IT Service Contest, updated on November 26, 2025.</p>
-            </div>
-            <p class="repo-tag">Public</p>
-          </article>
-
-          <!-- 공개 저장소 항목 -->
-          <article class="github-repo-row">
-            <div class="repo-main">
-              <h4>GDGOC_spring_study</h4>
-              <p>Java repository updated on November 18, 2025.</p>
-            </div>
-            <p class="repo-tag">Public</p>
-          </article>
-
-          <!-- 공개 저장소 항목 -->
-          <article class="github-repo-row">
-            <div class="repo-main">
-              <h4>ITM2-2_OSS_expense-splitterAssignment</h4>
-              <p>Forked assignment repository updated on October 23, 2025.</p>
-            </div>
-            <p class="repo-tag">Public</p>
-          </article>
-
-          <!-- 공개 저장소 항목 -->
-          <article class="github-repo-row">
-            <div class="repo-main">
-              <h4>ITM2-2_OSS_forking_testPractice</h4>
-              <p>Forked practice repository for GitHub forking and pull request workflow, updated on October 20, 2025.</p>
-            </div>
-            <p class="repo-tag">Public</p>
-          </article>
-
-          <!-- 공개 저장소 항목 -->
-          <article class="github-repo-row">
-            <div class="repo-main">
-              <h4>ITM2-2_CS_TeamProjects1</h4>
-              <p>Forked C repository updated on October 19, 2025.</p>
-            </div>
-            <p class="repo-tag">Public</p>
-          </article>
-
-          <!-- 공개 저장소 항목 -->
-          <article class="github-repo-row">
-            <div class="repo-main">
-              <h4>ITM2-1_CL_TeamProject_MazeGame</h4>
-              <p>Java team assignment repository, updated on June 9, 2025.</p>
-            </div>
-            <p class="repo-tag">Public</p>
-          </article>
-        </div>
+        <!-- 저장소 목록이 들어갈 영역 -->
+        <div class="github-repo-root"></div>
       </div>
     </section>
   </main>
