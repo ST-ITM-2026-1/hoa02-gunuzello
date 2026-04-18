@@ -242,6 +242,24 @@ footer p {
 .contact-page,
 .github-page {
   min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(120, 181, 255, 0.28), transparent 24%), /* 왼쪽 위 원형 빛 효과 */
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.24), transparent 20%), /* 오른쪽 위 밝은 효과 */
+    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 46%, #dcecff 46%, #edf4ff 100%); /* 사선 경계를 조금 더 오른쪽으로 이동 */
+  background-repeat: no-repeat; /* 배경 반복 방지 */
+  background-size: 100% 100vh; /* 첫 화면 기준으로 배경 크기 고정 */
+}
+body.night-theme.home-page,
+body.night-theme.projects-page,
+body.night-theme.skills-page,
+body.night-theme.contact-page,
+body.night-theme.github-page {
+  background:
+    radial-gradient(circle at top left, rgba(64, 121, 214, 0.26), transparent 24%), /* 왼쪽 위 빛 효과 */
+    radial-gradient(circle at top right, rgba(158, 200, 255, 0.08), transparent 20%), /* 오른쪽 위 빛 효과 */
+    linear-gradient(135deg, #04101f 0%, #0b2446 46%, #132746 46%, #0a1322 100%); /* 사선 경계를 조금 더 오른쪽으로 이동 */
+  background-repeat: no-repeat; /* 배경 반복 방지 */
+  background-size: 100% 100vh; /* 첫 화면 기준으로 배경 크기 고정 */
 }
 .home-main,
 .page-main {
@@ -277,64 +295,6 @@ footer p {
 }
 .projects-page .page-title {
   margin-bottom: 28px;
-}
-/* 페이지 배경 */
-.home-page {
-  background:
-    radial-gradient(circle at top left, rgba(120, 181, 255, 0.28), transparent 24%), /* 왼쪽 위 원형 빛 효과 */
-    radial-gradient(circle at top right, rgba(255, 255, 255, 0.24), transparent 20%), /* 오른쪽 위 밝은 효과 */
-    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 58%, #dcecff 58%, #edf4ff 100%); /* 대각선 배경 */
-}
-/* night 테마 홈 배경 */
-body.night-theme.home-page {
-  background:
-    radial-gradient(circle at top left, rgba(64, 121, 214, 0.26), transparent 24%), /* 왼쪽 위 빛 효과 */
-    radial-gradient(circle at top right, rgba(158, 200, 255, 0.08), transparent 20%), /* 오른쪽 위 빛 효과 */
-    linear-gradient(135deg, #04101f 0%, #0b2446 58%, #132746 58%, #0a1322 100%); /* 어두운 대각선 배경 */
-}
-.projects-page {
-  background:
-    radial-gradient(circle at top left, rgba(120, 181, 255, 0.22), transparent 22%), /* 왼쪽 위 빛 효과 */
-    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 38%, #dcecff 38%, #edf4ff 100%); /* 사선 배경 */
-}
-/* night 테마 projects 배경 */
-body.night-theme.projects-page {
-  background:
-    radial-gradient(circle at top left, rgba(64, 121, 214, 0.22), transparent 22%),
-    linear-gradient(135deg, #04101f 0%, #0b2446 38%, #132746 38%, #0a1322 100%);
-}
-.skills-page {
-  background:
-    radial-gradient(circle at top right, rgba(120, 181, 255, 0.2), transparent 24%), /* 오른쪽 위 빛 효과 */
-    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 40%, #dcecff 40%, #edf4ff 100%);
-}
-/* night 테마 skills 배경 */
-body.night-theme.skills-page {
-  background:
-    radial-gradient(circle at top right, rgba(64, 121, 214, 0.2), transparent 24%),
-    linear-gradient(135deg, #04101f 0%, #0b2446 40%, #132746 40%, #0a1322 100%);
-}
-.contact-page {
-  background:
-    radial-gradient(circle at top left, rgba(120, 181, 255, 0.22), transparent 22%),
-    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 42%, #dcecff 42%, #edf4ff 100%);
-}
-/* night 테마 contact 배경 */
-body.night-theme.contact-page {
-  background:
-    radial-gradient(circle at top left, rgba(64, 121, 214, 0.22), transparent 22%),
-    linear-gradient(135deg, #04101f 0%, #0b2446 42%, #132746 42%, #0a1322 100%);
-}
-.github-page {
-  background:
-    radial-gradient(circle at top right, rgba(120, 181, 255, 0.22), transparent 22%),
-    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 42%, #dcecff 42%, #edf4ff 100%);
-}
-/* night 테마 github 배경 */
-body.night-theme.github-page {
-  background:
-    radial-gradient(circle at top right, rgba(64, 121, 214, 0.22), transparent 22%),
-    linear-gradient(135deg, #04101f 0%, #0b2446 42%, #132746 42%, #0a1322 100%);
 }
 /* Home */
 .home-content {
@@ -771,30 +731,23 @@ body.night-theme .contact-button:hover {
 }
 /* 반응형: 모바일 */
 @media (max-width: 480px) {
-  .home-page {
-    background:
-      radial-gradient(circle at top left, rgba(120, 181, 255, 0.24), transparent 24%),
-      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 30%, #dcecff 30%, #edf4ff 100%);
-  }
-  .projects-page {
-    background:
-      radial-gradient(circle at top left, rgba(120, 181, 255, 0.24), transparent 24%),
-      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 24%, #dcecff 24%, #edf4ff 100%);
-  }
-  .skills-page {
-    background:
-      radial-gradient(circle at top right, rgba(120, 181, 255, 0.2), transparent 24%),
-      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 24%, #dcecff 24%, #edf4ff 100%);
-  }
-  .contact-page {
-    background:
-      radial-gradient(circle at top left, rgba(120, 181, 255, 0.2), transparent 22%),
-      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 24%, #dcecff 24%, #edf4ff 100%);
-  }
+  .home-page,
+  .projects-page,
+  .skills-page,
+  .contact-page,
   .github-page {
     background:
-      radial-gradient(circle at top right, rgba(120, 181, 255, 0.22), transparent 22%),
-      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 24%, #dcecff 24%, #edf4ff 100%);
+      radial-gradient(circle at top left, rgba(120, 181, 255, 0.24), transparent 24%),
+      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 28%, #dcecff 28%, #edf4ff 100%); /* 모바일 사선 경계도 조금 더 아래로 이동 */
+  }
+  body.night-theme.home-page,
+  body.night-theme.projects-page,
+  body.night-theme.skills-page,
+  body.night-theme.contact-page,
+  body.night-theme.github-page {
+    background:
+      radial-gradient(circle at top left, rgba(64, 121, 214, 0.24), transparent 24%),
+      linear-gradient(180deg, #04101f 0%, #0b2446 28%, #132746 28%, #0a1322 100%);
   }
   .nav-menu {
     gap: 10px; /* 모바일에서는 메뉴 간격도 줄임 */
