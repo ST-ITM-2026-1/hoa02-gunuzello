@@ -189,6 +189,12 @@ body.night-theme .theme-toggle-button:hover {
   background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%); /* 카드 배경을 단색 대신 부드럽게 처리 */
   box-shadow: var(--shadow-soft); /* 카드 아래 그림자 */
 }
+/* night 테마 공통 카드 */
+body.night-theme .content-card {
+  border-color: rgba(116, 160, 231, 0.24); /* 카드 경계선 가시성 강화 */
+  background: linear-gradient(180deg, rgba(13, 24, 44, 0.98) 0%, rgba(18, 34, 61, 0.96) 100%); /* dark 카드 배경 */
+  box-shadow: 0 14px 30px rgba(1, 8, 20, 0.28); /* dark 카드 그림자 */
+}
 .lift-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease; /* 카드가 자연스럽게 움직이도록 설정 */
 }
@@ -247,7 +253,7 @@ footer p {
     radial-gradient(circle at top right, rgba(255, 255, 255, 0.24), transparent 20%), /* 오른쪽 위 밝은 효과 */
     linear-gradient(135deg, #0a2a66 0%, #0f4fb4 46%, #dcecff 46%, #edf4ff 100%); /* 사선 경계를 조금 더 오른쪽으로 이동 */
   background-repeat: no-repeat; /* 배경 반복 방지 */
-  background-size: 100% 100vh; /* 첫 화면 기준으로 배경 크기 고정 */
+  background-size: 100% 100%; /* 페이지 전체 높이를 따라 배경이 끝까지 보이게 설정 */
 }
 body.night-theme.home-page,
 body.night-theme.projects-page,
@@ -259,7 +265,7 @@ body.night-theme.github-page {
     radial-gradient(circle at top right, rgba(158, 200, 255, 0.08), transparent 20%), /* 오른쪽 위 빛 효과 */
     linear-gradient(135deg, #04101f 0%, #0b2446 46%, #132746 46%, #0a1322 100%); /* 사선 경계를 조금 더 오른쪽으로 이동 */
   background-repeat: no-repeat; /* 배경 반복 방지 */
-  background-size: 100% 100vh; /* 첫 화면 기준으로 배경 크기 고정 */
+  background-size: 100% 100%; /* 페이지 전체 높이를 따라 배경이 끝까지 보이게 설정 */
 }
 .home-main,
 .page-main {
@@ -285,6 +291,12 @@ body.night-theme.github-page {
 }
 .page-panel {
   border: 1px solid var(--line-blue);
+}
+/* night 테마 메인 패널 */
+body.night-theme .home-intro,
+body.night-theme .page-panel {
+  border-color: rgba(120, 164, 235, 0.28); /* 패널 테두리를 조금 더 밝게 */
+  box-shadow: 0 24px 60px rgba(1, 8, 20, 0.42), inset 0 1px 0 rgba(180, 210, 255, 0.06); /* 패널이 배경에서 분리되어 보이도록 조정 */
 }
 .page-title {
   margin: 0 0 32px; /* 아래쪽만 여백 */
@@ -340,6 +352,14 @@ body.night-theme.github-page {
   align-items: center;
   justify-content: center;
   box-shadow: 0 20px 40px rgba(13, 71, 161, 0.14), inset 0 0 0 10px rgba(255, 255, 255, 0.55); /* 바깥 그림자 + 안쪽 흰 프레임 느낌 */
+}
+/* night 테마 사진 프레임 */
+body.night-theme .photo-frame {
+  border-color: rgba(116, 160, 231, 0.24); /* 프레임 테두리 */
+  background:
+    linear-gradient(180deg, rgba(48, 99, 182, 0.2), rgba(10, 18, 32, 0.98)),
+    #0b1526; /* dark 프레임 배경 */
+  box-shadow: 0 20px 40px rgba(1, 8, 20, 0.28), inset 0 0 0 10px rgba(173, 203, 255, 0.04); /* dark 프레임 그림자 */
 }
 .photo-frame span {
   color: #1557b0;
@@ -541,6 +561,10 @@ body.night-theme .github-profile-panel {
   border-color: rgba(116, 160, 231, 0.24); /* 어두운 테마 테두리 */
   background: linear-gradient(180deg, rgba(12, 22, 40, 0.98) 0%, rgba(17, 31, 56, 0.96) 100%); /* 어두운 카드 배경 */
 }
+/* night 테마 저장소 줄 */
+body.night-theme .github-repo-row {
+  border-bottom-color: rgba(116, 160, 231, 0.18); /* 구분선 가시성 조정 */
+}
 .contact-info-item h4 {
   margin: 0 0 8px;
   color: var(--title-blue);
@@ -592,6 +616,10 @@ body.night-theme .contact-form textarea::placeholder {
   outline: none; /* 기본 강조선 제거 */
   border-color: var(--accent-blue);
   box-shadow: 0 0 0 4px rgba(15, 79, 180, 0.12); /* 선택된 입력칸 표시 */
+}
+body.night-theme .contact-form input:focus,
+body.night-theme .contact-form textarea:focus {
+  box-shadow: 0 0 0 4px rgba(114, 168, 255, 0.18); /* dark 테마용 포커스 강조선 */
 }
 .contact-button {
   padding: 14px 18px; /* 버튼 안쪽 여백 */
