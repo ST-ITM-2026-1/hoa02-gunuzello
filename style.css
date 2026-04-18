@@ -25,6 +25,21 @@ body {
   color: var(--text-dark); /* 기본 글자색 */
   background: var(--page-bg); /* 페이지 기본 배경 */
 }
+/* 2단계용 대체 테마 변수 */
+body.night-theme {
+  --page-bg: #081120; /* 어두운 배경색 */
+  --title-blue: #b8d5ff; /* 어두운 배경에서 더 잘 보이는 밝은 파란색 */
+  --accent-blue: #72a8ff; /* 강조선용 밝은 파란색 */
+  --text-dark: #eef4ff; /* 어두운 테마 기본 글자색 */
+  --text-soft: #d5e3ff; /* 설명 문단용 밝은 글자색 */
+  --tag-bg: rgba(122, 168, 255, 0.16); /* 태그 배경 */
+  --line-blue: rgba(120, 164, 235, 0.24); /* 큰 패널 테두리 */
+  --line-soft: rgba(120, 164, 235, 0.22); /* 카드 테두리 */
+  --shadow-card: 0 24px 60px rgba(2, 7, 18, 0.42); /* 큰 패널 그림자 */
+  --shadow-soft: 0 14px 30px rgba(2, 7, 18, 0.28); /* 작은 카드 그림자 */
+  --title-shadow: 0 16px 30px rgba(1, 6, 18, 0.45); /* 제목 그림자 */
+  --intro-bg: linear-gradient(145deg, rgba(12, 22, 40, 0.96), rgba(19, 35, 62, 0.94)); /* 어두운 패널 배경 */
+}
 header,
 main,
 footer {
@@ -149,6 +164,23 @@ nav {
 .theme-toggle-button:hover .theme-toggle-thumb {
   transform: translateX(4px); /* hover 시 동그라미가 오른쪽으로 조금 움직여 스위치 느낌을 줌 */
 }
+/* night 테마일 때 스위치 색상 */
+body.night-theme .theme-toggle-button {
+  border-color: rgba(184, 213, 255, 0.28); /* 어두운 테마용 테두리 */
+  background-color: rgba(10, 20, 38, 0.44); /* 버튼 배경 */
+  color: #eef4ff; /* 버튼 글자색 */
+}
+body.night-theme .theme-toggle-track {
+  justify-content: flex-end; /* 동그라미를 오른쪽으로 보내서 켜진 느낌 표현 */
+  background-color: rgba(114, 168, 255, 0.28); /* 스위치 바 색상 */
+}
+body.night-theme .theme-toggle-thumb {
+  background-color: #dceaff; /* 어두운 테마용 동그라미 색 */
+}
+body.night-theme .theme-toggle-button:hover {
+  background-color: rgba(16, 30, 56, 0.8); /* hover 시 조금 더 진한 배경 */
+  color: #ffffff; /* hover 글자색 */
+}
 /* 공통 카드와 버튼 */
 .content-card {
   padding: 30px 24px; /* 카드 안쪽 여백 */
@@ -253,25 +285,56 @@ footer p {
     radial-gradient(circle at top right, rgba(255, 255, 255, 0.24), transparent 20%), /* 오른쪽 위 밝은 효과 */
     linear-gradient(135deg, #0a2a66 0%, #0f4fb4 58%, #dcecff 58%, #edf4ff 100%); /* 대각선 배경 */
 }
+/* night 테마 홈 배경 */
+body.night-theme.home-page {
+  background:
+    radial-gradient(circle at top left, rgba(64, 121, 214, 0.26), transparent 24%), /* 왼쪽 위 빛 효과 */
+    radial-gradient(circle at top right, rgba(158, 200, 255, 0.08), transparent 20%), /* 오른쪽 위 빛 효과 */
+    linear-gradient(135deg, #04101f 0%, #0b2446 58%, #132746 58%, #0a1322 100%); /* 어두운 대각선 배경 */
+}
 .projects-page {
   background:
     radial-gradient(circle at top left, rgba(120, 181, 255, 0.22), transparent 22%), /* 왼쪽 위 빛 효과 */
     linear-gradient(135deg, #0a2a66 0%, #0f4fb4 38%, #dcecff 38%, #edf4ff 100%); /* 사선 배경 */
+}
+/* night 테마 projects 배경 */
+body.night-theme.projects-page {
+  background:
+    radial-gradient(circle at top left, rgba(64, 121, 214, 0.22), transparent 22%),
+    linear-gradient(135deg, #04101f 0%, #0b2446 38%, #132746 38%, #0a1322 100%);
 }
 .skills-page {
   background:
     radial-gradient(circle at top right, rgba(120, 181, 255, 0.2), transparent 24%), /* 오른쪽 위 빛 효과 */
     linear-gradient(135deg, #0a2a66 0%, #0f4fb4 40%, #dcecff 40%, #edf4ff 100%);
 }
+/* night 테마 skills 배경 */
+body.night-theme.skills-page {
+  background:
+    radial-gradient(circle at top right, rgba(64, 121, 214, 0.2), transparent 24%),
+    linear-gradient(135deg, #04101f 0%, #0b2446 40%, #132746 40%, #0a1322 100%);
+}
 .contact-page {
   background:
     radial-gradient(circle at top left, rgba(120, 181, 255, 0.22), transparent 22%),
     linear-gradient(135deg, #0a2a66 0%, #0f4fb4 42%, #dcecff 42%, #edf4ff 100%);
 }
+/* night 테마 contact 배경 */
+body.night-theme.contact-page {
+  background:
+    radial-gradient(circle at top left, rgba(64, 121, 214, 0.22), transparent 22%),
+    linear-gradient(135deg, #04101f 0%, #0b2446 42%, #132746 42%, #0a1322 100%);
+}
 .github-page {
   background:
     radial-gradient(circle at top right, rgba(120, 181, 255, 0.22), transparent 22%),
     linear-gradient(135deg, #0a2a66 0%, #0f4fb4 42%, #dcecff 42%, #edf4ff 100%);
+}
+/* night 테마 github 배경 */
+body.night-theme.github-page {
+  background:
+    radial-gradient(circle at top right, rgba(64, 121, 214, 0.22), transparent 22%),
+    linear-gradient(135deg, #04101f 0%, #0b2446 42%, #132746 42%, #0a1322 100%);
 }
 /* Home */
 .home-content {
@@ -364,6 +427,15 @@ footer p {
 #filter-project:checked ~ .project-filter-menu label[for="filter-project"] {
   background-color: var(--title-blue);
   color: #ffffff;
+}
+/* night 테마 필터 버튼 */
+body.night-theme .project-filter-menu label {
+  border-color: rgba(132, 176, 245, 0.28); /* 어두운 테마 테두리 */
+  background-color: rgba(16, 30, 56, 0.82); /* 어두운 버튼 배경 */
+  color: #dbe9ff; /* 버튼 글자색 */
+}
+body.night-theme .project-filter-menu label:hover {
+  background-color: rgba(27, 48, 87, 0.92); /* hover 색상 */
 }
 .project-list {
   display: grid; /* 프로젝트 카드를 세로로 정리 */
@@ -502,6 +574,13 @@ footer p {
   border-radius: 18px; /* 모서리 둥글게 */
   background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%); /* 흰색 계열 배경 */
 }
+/* night 테마 정보 카드와 로고 카드 */
+body.night-theme .contact-info-item,
+body.night-theme .skill-logo-item,
+body.night-theme .github-profile-panel {
+  border-color: rgba(116, 160, 231, 0.24); /* 어두운 테마 테두리 */
+  background: linear-gradient(180deg, rgba(12, 22, 40, 0.98) 0%, rgba(17, 31, 56, 0.96) 100%); /* 어두운 카드 배경 */
+}
 .contact-info-item h4 {
   margin: 0 0 8px;
   color: var(--title-blue);
@@ -534,6 +613,17 @@ footer p {
   background-color: #ffffff;
   font: inherit; /* body에서 쓰는 글꼴과 크기를 그대로 상속 */
 }
+/* night 테마 입력창 */
+body.night-theme .contact-form input,
+body.night-theme .contact-form textarea {
+  border-color: rgba(116, 160, 231, 0.28); /* 입력창 테두리 */
+  background-color: rgba(9, 17, 31, 0.9); /* 입력창 배경 */
+  color: #eef4ff; /* 입력 글자색 */
+}
+body.night-theme .contact-form input::placeholder,
+body.night-theme .contact-form textarea::placeholder {
+  color: #9fb8dd; /* placeholder 글자색 */
+}
 .contact-form textarea {
   resize: vertical; /* 세로 방향으로만 크기 조절 */
 }
@@ -556,6 +646,14 @@ footer p {
 .contact-button:hover {
   transform: translateY(-2px);
   background-color: #0a3b82;
+}
+/* night 테마 전송 버튼 */
+body.night-theme .contact-button {
+  background-color: #2e6bc7; /* 조금 더 밝은 파란 버튼 */
+  color: #ffffff;
+}
+body.night-theme .contact-button:hover {
+  background-color: #4c86de; /* hover 시 더 밝게 */
 }
 /* GitHub */
 .github-profile-panel {
