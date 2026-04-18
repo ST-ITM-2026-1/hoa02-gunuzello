@@ -47,6 +47,59 @@ function toggleTheme(themeButton) {
   updateThemeButton(themeButton, nextTheme);
 }
 
+// 프로젝트 카드 표시 상태를 바꾸는 함수
+function applyProjectFilter(filterName, filterButtons, projectCards) {
+  // 모든 버튼의 active 상태를 먼저 초기화
+  filterButtons.forEach((button) => {
+    button.classList.remove("active");
+  });
+
+  // 현재 선택한 버튼만 active 처리
+  const activeButton = document.querySelector(`[data-filter="${filterName}"]`);
+  if (activeButton) {
+    activeButton.classList.add("active");
+  }
+
+  // 카드 하나씩 확인하면서 보여줄지 숨길지 결정
+  projectCards.forEach((card) => {
+    const cardCategory = card.dataset.category;
+
+    // all이면 전체 표시
+    if (filterName === "all") {
+      card.classList.remove("hidden");
+      return;
+    }
+
+    // 버튼 분류와 카드 분류가 같으면 표시, 다르면 숨김
+    card.classList.toggle("hidden", cardCategory !== filterName);
+  });
+}
+
+// 프로젝트 필터 기능 시작 함수
+function initializeProjectFilter() {
+  // 프로젝트 필터 버튼 전체 선택
+  const filterButtons = document.querySelectorAll(".project-filter-button");
+
+  // 프로젝트 카드 전체 선택
+  const projectCards = document.querySelectorAll(".project-card");
+
+  // Projects 페이지가 아니면 종료
+  if (!filterButtons.length || !projectCards.length) {
+    return;
+  }
+
+  // 처음에는 All 상태로 맞춤
+  applyProjectFilter("all", filterButtons, projectCards);
+
+  // 버튼 클릭 시 해당 분류로 필터 적용
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedFilter = button.dataset.filter;
+      applyProjectFilter(selectedFilter, filterButtons, projectCards);
+    });
+  });
+}
+
 // 페이지가 모두 읽힌 뒤 실행
 document.addEventListener("DOMContentLoaded", () => {
   // 테마 버튼 선택
@@ -70,4 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
   themeButton.addEventListener("click", () => {
     toggleTheme(themeButton);
   });
+
+  // 프로젝트 필터 기능 실행
+  initializeProjectFilter();
 });
