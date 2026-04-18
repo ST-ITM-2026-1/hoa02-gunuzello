@@ -378,9 +378,6 @@ body.night-theme .photo-frame {
 .project-filter {
   width: 100%;
 }
-.project-filter input[type="radio"] {
-  display: none; /* 실제 라디오 버튼은 숨기고 label만 보이게 처리 */
-}
 .project-filter-menu {
   display: flex;
   flex-wrap: wrap;
@@ -388,7 +385,7 @@ body.night-theme .photo-frame {
   gap: 14px;
   margin-bottom: 34px;
 }
-.project-filter-menu label {
+.project-filter-button {
   padding: 10px 18px; /* 버튼 안쪽 여백 */
   border: 1px solid rgba(96, 140, 210, 0.34); /* 버튼 테두리 */
   border-radius: 999px; /* 둥근 버튼 */
@@ -397,40 +394,37 @@ body.night-theme .photo-frame {
   font-weight: 700; /* 버튼 글자 굵게 */
   cursor: pointer; /* 마우스를 올리면 클릭 가능 표시 */
   transition: all 0.2s ease;
+  font: inherit; /* 사이트 기본 글꼴 상속 */
 }
-.project-filter-menu label:hover {
+.project-filter-button:hover {
   background-color: #dfeeff;
 }
-#filter-all:checked ~ .project-filter-menu label[for="filter-all"],
-#filter-award:checked ~ .project-filter-menu label[for="filter-award"],
-#filter-community:checked ~ .project-filter-menu label[for="filter-community"],
-#filter-project:checked ~ .project-filter-menu label[for="filter-project"] {
+/* 현재 선택된 필터 버튼 */
+.project-filter-button.active {
   background-color: var(--title-blue);
   color: #ffffff;
 }
 /* night 테마 필터 버튼 */
-body.night-theme .project-filter-menu label {
+body.night-theme .project-filter-button {
   border-color: rgba(132, 176, 245, 0.28); /* 어두운 테마 테두리 */
   background-color: rgba(16, 30, 56, 0.82); /* 어두운 버튼 배경 */
   color: #dbe9ff; /* 버튼 글자색 */
 }
-body.night-theme .project-filter-menu label:hover {
+body.night-theme .project-filter-button:hover {
   background-color: rgba(27, 48, 87, 0.92); /* hover 색상 */
+}
+body.night-theme .project-filter-button.active {
+  background-color: #6fa9ff; /* 선택된 버튼 배경 */
+  color: #081120; /* 선택된 버튼 글자색 */
 }
 .project-list {
   display: grid; /* 프로젝트 카드를 세로로 정리 */
   grid-template-columns: 1fr; /* 한 줄에 한 카드 */
   gap: 24px; /* 카드 사이 간격 */
 }
-#filter-award:checked ~ .project-list .project-card,
-#filter-community:checked ~ .project-list .project-card,
-#filter-project:checked ~ .project-list .project-card {
+/* JavaScript에서 숨김 처리할 카드 */
+.project-card.hidden {
   display: none;
-}
-#filter-award:checked ~ .project-list .award-item,
-#filter-community:checked ~ .project-list .community-item,
-#filter-project:checked ~ .project-list .project-item {
-  display: block;
 }
 .project-card {
   position: relative; /* 나중에 내부 요소 위치 조절이 필요할 때 기준점 역할 */
@@ -800,7 +794,7 @@ body.night-theme .contact-button:hover {
     gap: 10px; /* 필터 버튼 간격 축소 */
     margin-bottom: 26px; /* 아래 여백 축소 */
   }
-  .project-filter-menu label {
+  .project-filter-button {
     padding: 8px 14px;
     font-size: 0.92rem;
   }

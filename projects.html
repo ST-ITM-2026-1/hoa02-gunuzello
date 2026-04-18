@@ -47,27 +47,21 @@
     <section class="page-panel">
       <h2 class="page-title">Projects</h2>
       
-      <!-- CSS만으로 분류를 바꾸기 위한 필터 영역 -->
+      <!-- JavaScript로 분류를 바꾸기 위한 필터 영역 -->
       <div class="project-filter">
-        <!-- 라디오 버튼은 하나만 선택되게 만들 때 사용 -->
-        <input type="radio" name="project-view" id="filter-all" checked>
-        <input type="radio" name="project-view" id="filter-award">
-        <input type="radio" name="project-view" id="filter-community">
-        <input type="radio" name="project-view" id="filter-project">
-
         <!-- 분류 선택 메뉴 -->
         <div class="project-filter-menu">
-          <!-- label을 누르면 같은 id를 가진 라디오 버튼이 선택된다 -->
-          <label for="filter-all">All</label>
-          <label for="filter-award">Award</label>
-          <label for="filter-community">Community</label>
-          <label for="filter-project">Project</label>
+          <!-- data-filter 값은 다음 단계에서 JavaScript가 읽는다 -->
+          <button class="project-filter-button active" type="button" data-filter="all">All</button>
+          <button class="project-filter-button" type="button" data-filter="award">Award</button>
+          <button class="project-filter-button" type="button" data-filter="community">Community</button>
+          <button class="project-filter-button" type="button" data-filter="project">Project</button>
         </div>
 
         <!-- 프로젝트 카드 목록 -->
         <div class="project-list">
           <!-- 프로젝트/활동 카드 -->
-          <article class="content-card project-card lift-card accent-left award-item">
+          <article class="content-card project-card lift-card accent-left" data-category="award">
             <!-- 카드 분류 표시 -->
             <p class="project-tag award-tag">Award</p>
             <h3><span class="project-icon" aria-label="Bronze Prize">🥉</span> 2022 IT Service Idea Contest</h3>
@@ -78,7 +72,7 @@
           </article>
 
           <!-- 프로젝트/활동 카드 -->
-          <article class="content-card project-card lift-card accent-left award-item">
+          <article class="content-card project-card lift-card accent-left" data-category="award">
             <!-- 카드 분류 표시 -->
             <p class="project-tag award-tag">Award</p>
             <h3><span class="project-icon" aria-label="Grand Prize">🏆</span> 2023 5th Infantry Division Startup Competition</h3>
@@ -90,7 +84,7 @@
           </article>
 
           <!-- 프로젝트/활동 카드 -->
-          <article class="content-card project-card lift-card accent-left project-item">
+          <article class="content-card project-card lift-card accent-left" data-category="project">
             <!-- 카드 분류 표시 -->
             <p class="project-tag project-tag-blue">Project</p>
             <h3>2024 MOA Project</h3>
@@ -102,7 +96,7 @@
           </article>
 
           <!-- 프로젝트/활동 카드 -->
-          <article class="content-card project-card lift-card accent-left award-item">
+          <article class="content-card project-card lift-card accent-left" data-category="award">
             <!-- 카드 분류 표시 -->
             <p class="project-tag award-tag">Award</p>
             <h3><span class="project-icon" aria-label="Bronze Prize">🥉</span> 2025 Global Challenge in ITM</h3>
@@ -114,7 +108,7 @@
           </article>
 
           <!-- 프로젝트/활동 카드 -->
-          <article class="content-card project-card lift-card accent-left community-item">
+          <article class="content-card project-card lift-card accent-left" data-category="community">
             <!-- 카드 분류 표시 -->
             <p class="project-tag community-tag">Community</p>
             <h3>2025 Google Developer Group on Campus SeoulTech</h3>
@@ -125,7 +119,7 @@
           </article>
 
           <!-- 프로젝트/활동 카드 -->
-          <article class="content-card project-card lift-card accent-left project-item">
+          <article class="content-card project-card lift-card accent-left" data-category="project">
             <!-- 카드 분류 표시 -->
             <p class="project-tag project-tag-blue">Project</p>
             <h3>2026 Google Solution Challenge - Backend Part</h3>
@@ -137,7 +131,7 @@
           </article>
 
           <!-- 프로젝트/활동 카드 -->
-          <article class="content-card project-card lift-card accent-left community-item">
+          <article class="content-card project-card lift-card accent-left" data-category="community">
             <!-- 카드 분류 표시 -->
             <p class="project-tag community-tag">Community</p>
             <h3>2026 ITM 15th OneSecond Student Council - Student President</h3>
