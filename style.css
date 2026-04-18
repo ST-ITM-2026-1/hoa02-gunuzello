@@ -1,0 +1,707 @@
+/* 공통 변수 */
+:root {
+  --page-bg: #edf4ff; /* 사이트 기본 배경색 */
+  --title-blue: #0d47a1; /* 제목에 쓰는 메인 파란색 */
+  --accent-blue: #0f4fb4; /* 강조선이나 포커스에 쓰는 파란색 */
+  --text-dark: #1d1d1d; /* 가장 기본 글자색 */
+  --text-soft: #26415f; /* 설명 문단처럼 조금 부드러운 글자색 */
+  --tag-bg: #eaf2ff; /* 태그 배경색 */
+  --line-blue: rgba(144, 174, 220, 0.34); /* 큰 박스 테두리에 쓰는 연한 파란선 */
+  --line-soft: rgba(132, 170, 224, 0.36); /* 카드 테두리에 쓰는 연한 선 */
+  --shadow-card: 0 24px 60px rgba(9, 54, 125, 0.18); /* 큰 패널 그림자 */
+  --shadow-soft: 0 14px 30px rgba(12, 70, 156, 0.12); /* 작은 카드 그림자 */
+  --title-shadow: 0 16px 30px rgba(5, 26, 66, 0.24); /* 상단 큰 제목 뒤 그림자 */
+  --intro-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(238, 246, 255, 0.92)); /* 패널 안쪽 배경 */
+  --page-title-size: clamp(2.2rem, 4vw, 4.1rem); /* 화면 크기에 따라 제목 크기를 자동 조절 */
+}
+/* 기본 설정 */
+* {
+  box-sizing: border-box; /* padding과 border를 width 계산 안에 포함 */
+}
+body {
+  margin: 0; /* 브라우저 기본 바깥 여백 제거 */
+  font-family: Arial, sans-serif; /* 전체 기본 글꼴 */
+  line-height: 1.6; /* 줄 간격 */
+  color: var(--text-dark); /* 기본 글자색 */
+  background: var(--page-bg); /* 페이지 기본 배경 */
+}
+header,
+main,
+footer {
+  width: min(1100px, calc(100% - 3rem)); /* 최대 폭은 1100px, 작은 화면은 좌우 여백 유지 */
+  margin: 0 auto; /* 가운데 정렬 */
+}
+header,
+footer {
+  padding: 24px 0; /* 위아래 여백 */
+  text-align: center; /* 안쪽 글자 가운데 정렬 */
+}
+main {
+  padding: 28px 0 40px; /* 본문 위아래 여백 */
+}
+section {
+  padding: 20px; /* section 안쪽 여백 */
+  border: 1px solid #c9d9f2; /* 기본 테두리 */
+  background-color: #ffffff; /* 기본 배경색 */
+}
+h1,
+h2,
+p {
+  text-align: center; /* 기본적으로 제목과 문단은 가운데 정렬 */
+}
+/* 공통 헤더 */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.site-header h1 {
+  width: 100%;
+  margin: 0;
+  color: #ffffff;
+  text-align: center;
+  font-size: var(--page-title-size);
+  letter-spacing: 0.1em; /* 글자 사이를 조금 벌려서 제목 느낌 강조 */
+  text-shadow: var(--title-shadow);
+}
+nav {
+  width: 100%;
+  margin-top: 20px; /* 제목과 메뉴 사이 간격 */
+}
+.nav-menu {
+  display: flex; /* 메뉴를 가로로 정렬 */
+  flex-wrap: wrap; /* 좁아지면 다음 줄로 넘김 */
+  justify-content: center; /* 가운데 정렬 */
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-menu a {
+  padding: 11px 18px; /* 버튼 안쪽 여백 */
+  border: 1px solid rgba(255, 255, 255, 0.22); /* 얇은 테두리 */
+  border-radius: 999px; /* pill 모양 버튼 */
+  background-color: rgba(8, 32, 79, 0.28); /* 반투명 배경 */
+  box-shadow: 0 10px 24px rgba(4, 28, 71, 0.16); /* 버튼 그림자 */
+  color: #ffffff; /* 메뉴 글자색 */
+  text-decoration: none; /* 링크 밑줄 제거 */
+  font-weight: 600; /* 메뉴 글자 조금 굵게 */
+  transition: all 0.2s ease; /* hover 변화가 부드럽게 보이도록 설정 */
+}
+.nav-menu a:hover {
+  transform: translateY(-2px); /* 살짝 위로 올라오는 효과 */
+  background-color: #ffffff;
+  color: var(--title-blue);
+}
+/* 공통 카드와 버튼 */
+.content-card {
+  padding: 30px 24px; /* 카드 안쪽 여백 */
+  border: 1px solid var(--line-soft); /* 카드 테두리 */
+  border-radius: 24px; /* 카드 모서리 둥글게 */
+  background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%); /* 카드 배경을 단색 대신 부드럽게 처리 */
+  box-shadow: var(--shadow-soft); /* 카드 아래 그림자 */
+}
+.lift-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* 카드가 자연스럽게 움직이도록 설정 */
+}
+.lift-card:hover {
+  transform: translateY(-4px); /* 카드 hover 시 위로 조금 이동 */
+  box-shadow: 0 18px 34px rgba(12, 70, 156, 0.16);
+}
+.accent-left {
+  border-left: 8px solid var(--accent-blue); /* 왼쪽 강조선 */
+}
+.accent-top {
+  border-top: 8px solid var(--accent-blue); /* 위쪽 강조선 */
+}
+.project-tag,
+.skill-tag,
+.github-tag,
+.repo-tag {
+  display: inline-block; /* 내용만큼만 너비를 쓰게 함 */
+  margin: 0 0 14px;
+  padding: 6px 12px;
+  border-radius: 999px; /* pill 모양 태그 */
+  background-color: var(--tag-bg);
+  color: var(--title-blue);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.skill-tag {
+  margin-bottom: 16px;
+}
+.pill-link,
+.github-link-button,
+.instagram-link {
+  display: inline-block;
+  padding: 10px 16px; /* 버튼 안쪽 여백 */
+  border-radius: 999px; /* 완전히 둥근 버튼 */
+  background-color: #e8f1ff; /* 연한 파란 배경 */
+  color: var(--title-blue); /* 버튼 글자색 */
+  text-decoration: none; /* 링크 밑줄 제거 */
+  font-weight: 700; /* 버튼 글자 강조 */
+}
+footer p {
+  color: var(--title-blue);
+  font-weight: 600; /* 하단 문구는 조금 굵게 표시 */
+}
+/* 페이지 공통 레이아웃 */
+.home-page,
+.projects-page,
+.skills-page,
+.contact-page,
+.github-page {
+  min-height: 100vh;
+}
+.home-main,
+.page-main {
+  padding: 18px 0 36px;
+}
+.home-main {
+  min-height: calc(100vh - 220px);
+  display: flex; /* 홈 카드 세로 정렬용 */
+  align-items: center; /* 화면 중앙에 오도록 정렬 */
+}
+.home-intro,
+.page-panel {
+  width: 100%;
+  margin: 0; /* 기본 바깥 여백 제거 */
+  padding: 56px 54px; /* 큰 패널 안쪽 여백 */
+  border-radius: 36px; /* 모서리를 크게 둥글게 */
+  background: var(--intro-bg); /* 흰색과 연한 파란색이 섞인 패널 배경 */
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.68); /* 바깥 그림자 + 안쪽 밝은 선 */
+}
+.home-intro {
+  overflow: hidden;
+  border: 1px solid rgba(144, 174, 220, 0.34);
+}
+.page-panel {
+  border: 1px solid var(--line-blue);
+}
+.page-title {
+  margin: 0 0 32px; /* 아래쪽만 여백 */
+  color: var(--title-blue); /* 페이지 소제목 색 */
+  font-size: 2.5rem; /* 페이지 제목 크기 */
+  text-transform: uppercase; /* 영어를 대문자로 표시 */
+  letter-spacing: 0.12em; /* 글자 사이를 살짝 벌림 */
+}
+.projects-page .page-title {
+  margin-bottom: 28px;
+}
+/* 페이지 배경 */
+.home-page {
+  background:
+    radial-gradient(circle at top left, rgba(120, 181, 255, 0.28), transparent 24%), /* 왼쪽 위 원형 빛 효과 */
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.24), transparent 20%), /* 오른쪽 위 밝은 효과 */
+    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 58%, #dcecff 58%, #edf4ff 100%); /* 대각선 배경 */
+}
+.projects-page {
+  background:
+    radial-gradient(circle at top left, rgba(120, 181, 255, 0.22), transparent 22%), /* 왼쪽 위 빛 효과 */
+    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 38%, #dcecff 38%, #edf4ff 100%); /* 사선 배경 */
+}
+.skills-page {
+  background:
+    radial-gradient(circle at top right, rgba(120, 181, 255, 0.2), transparent 24%), /* 오른쪽 위 빛 효과 */
+    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 40%, #dcecff 40%, #edf4ff 100%);
+}
+.contact-page {
+  background:
+    radial-gradient(circle at top left, rgba(120, 181, 255, 0.22), transparent 22%),
+    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 42%, #dcecff 42%, #edf4ff 100%);
+}
+.github-page {
+  background:
+    radial-gradient(circle at top right, rgba(120, 181, 255, 0.22), transparent 22%),
+    linear-gradient(135deg, #0a2a66 0%, #0f4fb4 42%, #dcecff 42%, #edf4ff 100%);
+}
+/* Home */
+.home-content {
+  display: grid; /* 글과 사진 2열 배치 */
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 340px); /* 첫 칸은 글, 두 번째 칸은 사진 / minmax는 최소~최대 범위 지정 */
+  gap: 48px;
+  align-items: center;
+}
+.about-text {
+  display: flex;
+  flex-direction: column; /* 문단들을 세로로 쌓기 */
+  align-items: center; /* 글 묶음 자체는 가운데에 놓기 */
+}
+.home-intro h2 {
+  margin: 0 0 22px;
+  color: var(--title-blue);
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.intro-text {
+  width: 100%; /* 부모 영역 안에서 꽉 사용 */
+  max-width: 620px; /* 문단이 너무 길어지지 않도록 제한 */
+  margin: 0 0 20px; /* 문단 아래 간격 */
+  color: var(--text-soft); /* 설명용 문단 색 */
+  text-align: left; /* 실제 문장은 읽기 편하게 왼쪽 정렬 */
+  font-size: 1.05rem; /* 본문 글자 크기 */
+}
+.photo-space {
+  display: flex;
+  justify-content: center; /* 사진 프레임을 가운데 배치 */
+}
+.photo-frame {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 3 / 4; /* 사진 비율 고정 */
+  border: 1px solid rgba(21, 87, 176, 0.24);
+  border-radius: 34px;
+  background:
+    linear-gradient(180deg, rgba(31, 98, 203, 0.16), rgba(255, 255, 255, 0.97)),
+    #f7fbff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(13, 71, 161, 0.14), inset 0 0 0 10px rgba(255, 255, 255, 0.55); /* 바깥 그림자 + 안쪽 흰 프레임 느낌 */
+}
+.photo-frame span {
+  color: #1557b0;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* 비율 유지하면서 프레임을 꽉 채움 */
+  border-radius: 34px;
+}
+/* Projects */
+.project-filter {
+  width: 100%;
+}
+.project-filter input[type="radio"] {
+  display: none; /* 실제 라디오 버튼은 숨기고 label만 보이게 처리 */
+}
+.project-filter-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 34px;
+}
+.project-filter-menu label {
+  padding: 10px 18px; /* 버튼 안쪽 여백 */
+  border: 1px solid rgba(96, 140, 210, 0.34); /* 버튼 테두리 */
+  border-radius: 999px; /* 둥근 버튼 */
+  background-color: #eef5ff; /* 기본 배경 */
+  color: var(--title-blue); /* 기본 글자색 */
+  font-weight: 700; /* 버튼 글자 굵게 */
+  cursor: pointer; /* 마우스를 올리면 클릭 가능 표시 */
+  transition: all 0.2s ease;
+}
+.project-filter-menu label:hover {
+  background-color: #dfeeff;
+}
+#filter-all:checked ~ .project-filter-menu label[for="filter-all"],
+#filter-award:checked ~ .project-filter-menu label[for="filter-award"],
+#filter-community:checked ~ .project-filter-menu label[for="filter-community"],
+#filter-project:checked ~ .project-filter-menu label[for="filter-project"] {
+  background-color: var(--title-blue);
+  color: #ffffff;
+}
+.project-list {
+  display: grid; /* 프로젝트 카드를 세로로 정리 */
+  grid-template-columns: 1fr; /* 한 줄에 한 카드 */
+  gap: 24px; /* 카드 사이 간격 */
+}
+#filter-award:checked ~ .project-list .project-card,
+#filter-community:checked ~ .project-list .project-card,
+#filter-project:checked ~ .project-list .project-card {
+  display: none;
+}
+#filter-award:checked ~ .project-list .award-item,
+#filter-community:checked ~ .project-list .community-item,
+#filter-project:checked ~ .project-list .project-item {
+  display: block;
+}
+.project-card {
+  position: relative; /* 나중에 내부 요소 위치 조절이 필요할 때 기준점 역할 */
+  padding: 28px 24px; /* project 카드 전용 여백 */
+}
+.project-card h3,
+.skill-card h3,
+.contact-card h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  color: var(--title-blue);
+  text-align: center;
+}
+.project-card h3 {
+  margin-bottom: 14px;
+}
+.project-card p {
+  margin-bottom: 0;
+  color: var(--text-soft);
+  text-align: left;
+}
+.award-tag {
+  background-color: #e7f0ff;
+  color: #0b4ea2;
+}
+.project-tag-blue {
+  background-color: #edf5ff;
+  color: #1a5bb1;
+}
+.community-tag {
+  background-color: #eef7ff;
+  color: #16608f;
+}
+.ongoing-tag {
+  background-color: #e9f6ff;
+  color: #0f6b91;
+}
+.leadership-tag {
+  background-color: #eef2ff;
+  color: #384ea8;
+}
+.project-icon {
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+/* Skills */
+.skills-grid {
+  display: grid; /* 기술 카드 3열 배치 */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* repeat(3, ...)는 같은 칸을 3번 반복 / 1fr은 남는 공간을 같은 비율로 나눔 */
+  gap: 24px;
+}
+.skill-items {
+  margin: 0; /* 기본 목록 여백 제거 */
+  padding-left: 20px; /* 목록 들여쓰기 */
+}
+.skill-items li {
+  margin-bottom: 12px;
+  color: var(--text-soft);
+  text-align: left;
+}
+.skill-logo-list {
+  display: grid; /* 로고 영역 정렬 */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2열 배치 */
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.skill-logo-item {
+  min-height: 120px;
+  padding: 16px 12px;
+  border: 1px solid rgba(132, 170, 224, 0.3);
+  border-radius: 18px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.skill-logo-item img {
+  width: 56px;
+  height: 56px;
+  display: block;
+  object-fit: contain; /* 로고가 잘리지 않게 맞춤 */
+}
+.skill-logo-item span {
+  color: var(--text-soft);
+  font-weight: 700;
+  text-align: center;
+}
+/* Contact */
+.contact-layout {
+  display: grid; /* 연락 정보와 폼을 2열로 배치 */
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.3fr); /* 왼쪽 정보, 오른쪽 폼 */
+  gap: 24px;
+  align-items: start;
+}
+.contact-info-list,
+.contact-form,
+.form-group,
+.instagram-item {
+  display: grid; /* 세로로 정리된 묶음을 만들 때 사용 */
+}
+.contact-info-list {
+  gap: 14px;
+}
+.contact-form {
+  gap: 18px;
+}
+.form-group,
+.instagram-item {
+  gap: 8px;
+}
+.instagram-item {
+  gap: 10px;
+}
+.contact-info-item {
+  padding: 16px; /* 정보 카드 안쪽 여백 */
+  border: 1px solid rgba(132, 170, 224, 0.28); /* 정보 카드 테두리 */
+  border-radius: 18px; /* 모서리 둥글게 */
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%); /* 흰색 계열 배경 */
+}
+.contact-info-item h4 {
+  margin: 0 0 8px;
+  color: var(--title-blue);
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  text-align: left;
+}
+.contact-info-item p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  text-align: left;
+}
+.instagram-link {
+  width: fit-content;
+  padding: 8px 12px;
+}
+.form-group label {
+  color: var(--title-blue);
+  font-weight: 700;
+  text-align: left;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(132, 170, 224, 0.45);
+  border-radius: 16px;
+  background-color: #ffffff;
+  font: inherit; /* body에서 쓰는 글꼴과 크기를 그대로 상속 */
+}
+.contact-form textarea {
+  resize: vertical; /* 세로 방향으로만 크기 조절 */
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none; /* 기본 강조선 제거 */
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 4px rgba(15, 79, 180, 0.12); /* 선택된 입력칸 표시 */
+}
+.contact-button {
+  padding: 14px 18px; /* 버튼 안쪽 여백 */
+  border: none; /* 기본 버튼 테두리 제거 */
+  border-radius: 16px; /* 버튼 모서리 둥글게 */
+  background-color: var(--title-blue); /* 버튼 배경색 */
+  color: #ffffff; /* 버튼 글자색 */
+  font-weight: 700; /* 버튼 글자 굵게 */
+  cursor: pointer; /* 마우스를 올리면 클릭 표시 */
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.contact-button:hover {
+  transform: translateY(-2px);
+  background-color: #0a3b82;
+}
+/* GitHub */
+.github-profile-panel {
+  margin-bottom: 30px; /* 아래 영역과 간격 */
+  padding: 24px 26px; /* 패널 안쪽 여백 */
+  border: 1px solid rgba(132, 170, 224, 0.3); /* 패널 테두리 */
+  border-radius: 22px; /* 모서리 둥글게 */
+  background: rgba(255, 255, 255, 0.82); /* 반투명 흰 배경 */
+  display: flex; /* 프로필 사진, 글, 버튼을 한 줄로 배치 */
+  justify-content: space-between; /* 양 끝으로 벌려서 배치 */
+  align-items: center;
+  gap: 18px;
+}
+.github-avatar {
+  flex-shrink: 0;
+}
+.github-avatar img {
+  width: 96px; /* 가로 크기 */
+  height: 96px; /* 세로 크기 */
+  display: block; /* 이미지 아래 공백 제거 */
+  object-fit: cover; /* 원형 영역을 꽉 채우도록 표시 */
+  border: 3px solid rgba(15, 79, 180, 0.18); /* 바깥 테두리 */
+  border-radius: 50%; /* 원형 이미지 */
+}
+.github-profile-text,
+.repo-main {
+  flex: 1; /* 남는 공간을 자연스럽게 차지하게 설정 */
+}
+.github-profile-panel h3,
+.github-repo-header h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--title-blue);
+  text-align: left;
+}
+.github-description,
+.repo-main p {
+  margin: 0;
+  color: var(--text-soft);
+  text-align: left;
+}
+.github-description {
+  max-width: 760px;
+}
+.github-repo-section {
+  padding-top: 8px;
+}
+.github-repo-header {
+  margin-bottom: 18px;
+}
+.github-repo-header h3 {
+  margin-bottom: 0;
+}
+.github-repo-list {
+  display: grid;
+  gap: 14px;
+}
+.github-repo-row {
+  padding: 18px 20px; /* 저장소 한 줄 여백 */
+  border-bottom: 1px solid rgba(132, 170, 224, 0.28); /* 아래 구분선 */
+  display: flex; /* 저장소 정보와 Public 태그를 가로 배치 */
+  justify-content: space-between; /* 좌우로 벌림 */
+  align-items: flex-start; /* 위쪽 기준 정렬 */
+  gap: 18px; /* 요소 사이 간격 */
+}
+.repo-main h4 {
+  margin: 0 0 6px;
+  color: var(--title-blue);
+  font-size: 1.02rem;
+  text-align: left;
+}
+/* 반응형: 태블릿 */
+@media (max-width: 768px) {
+  .site-header h1 {
+    font-size: 2.2rem; /* 태블릿에서는 제목 크기 축소 */
+  }
+  .home-main {
+    min-height: auto; /* 화면 높이를 강제로 맞추지 않음 */
+    padding-top: 12px; /* 위쪽 여백을 조금 줄임 */
+  }
+  .home-intro,
+  .page-panel {
+    padding: 38px 28px; /* 큰 패널 여백 축소 */
+  }
+  .home-content {
+    grid-template-columns: 1fr; /* 태블릿 이하에서는 세로 배치 */
+    gap: 28px;
+  }
+  .photo-frame {
+    max-width: 240px; /* 사진 프레임 크기 축소 */
+  }
+  .page-title {
+    font-size: 2.1rem; /* 페이지 제목 축소 */
+  }
+  .project-list,
+  .skills-grid,
+  .contact-layout {
+    grid-template-columns: 1fr; /* 카드와 레이아웃을 한 줄씩 쌓기 */
+  }
+  .github-profile-panel {
+    flex-direction: column; /* 가로 배치를 세로 배치로 변경 */
+    align-items: flex-start;
+  }
+  .github-avatar img {
+    width: 84px; /* 프로필 이미지 축소 */
+    height: 84px;
+  }
+  .github-repo-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .skill-logo-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 태블릿에서는 로고를 3열로 정리 */
+  }
+}
+/* 반응형: 모바일 */
+@media (max-width: 480px) {
+  .home-page {
+    background:
+      radial-gradient(circle at top left, rgba(120, 181, 255, 0.24), transparent 24%),
+      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 30%, #dcecff 30%, #edf4ff 100%);
+  }
+  .projects-page {
+    background:
+      radial-gradient(circle at top left, rgba(120, 181, 255, 0.24), transparent 24%),
+      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 24%, #dcecff 24%, #edf4ff 100%);
+  }
+  .skills-page {
+    background:
+      radial-gradient(circle at top right, rgba(120, 181, 255, 0.2), transparent 24%),
+      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 24%, #dcecff 24%, #edf4ff 100%);
+  }
+  .contact-page {
+    background:
+      radial-gradient(circle at top left, rgba(120, 181, 255, 0.2), transparent 22%),
+      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 24%, #dcecff 24%, #edf4ff 100%);
+  }
+  .github-page {
+    background:
+      radial-gradient(circle at top right, rgba(120, 181, 255, 0.22), transparent 22%),
+      linear-gradient(180deg, #0a2a66 0%, #0f4fb4 24%, #dcecff 24%, #edf4ff 100%);
+  }
+  .nav-menu {
+    gap: 10px; /* 모바일에서는 메뉴 간격도 줄임 */
+  }
+  .nav-menu a {
+    padding: 8px 12px;
+    font-size: 0.95rem; /* 모바일에서 메뉴가 답답하지 않게 축소 */
+  }
+  .site-header h1 {
+    font-size: 1.8rem; /* 모바일에서는 제목 더 축소 */
+  }
+  .home-intro,
+  .page-panel {
+    padding: 28px 18px;
+    border-radius: 24px; /* 작은 화면에서 박스도 조금 더 compact하게 조정 */
+  }
+  .home-intro h2,
+  .page-title {
+    font-size: 1.6rem; /* 소제목 크기도 같이 줄임 */
+  }
+  .project-filter-menu {
+    gap: 10px; /* 필터 버튼 간격 축소 */
+    margin-bottom: 26px; /* 아래 여백 축소 */
+  }
+  .project-filter-menu label {
+    padding: 8px 14px;
+    font-size: 0.92rem;
+  }
+  .intro-text {
+    font-size: 0.98rem;
+  }
+  .project-card,
+  .skill-card,
+  .contact-card {
+    padding: 22px 18px; /* 카드가 모바일 화면에서 너무 커 보이지 않게 조정 */
+  }
+  .project-tag,
+  .skill-tag {
+    font-size: 0.76rem;
+  }
+  .github-profile-panel {
+    padding: 22px 18px; /* GitHub 상단 패널도 compact하게 조정 */
+  }
+  .github-repo-row {
+    padding: 16px 0;
+  }
+  .skill-logo-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .skill-logo-item {
+    min-height: 104px; /* 카드 높이 축소 */
+    padding: 12px 10px; /* 카드 안쪽 여백 축소 */
+  }
+  .skill-logo-item img {
+    width: 48px;
+    height: 48px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px 14px;
+  }
+}

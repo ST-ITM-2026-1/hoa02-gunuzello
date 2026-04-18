@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 문자 인코딩 설정 -->
+  <meta charset="UTF-8">
+  <!-- 모바일 화면 크기 대응 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 브라우저 탭 제목 -->
+  <title>Contact | Gunwoo Kim Portfolio</title>
+  <!-- CSS 파일 연결 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<!-- contact 화면 전용 클래스 지정 -->
+<body class="contact-page">
+  <!-- 공통 상단 영역 -->
+  <header class="site-header">
+    <!-- 메인 제목 -->
+    <h1>KIM GUNWOO - PORTFOLIO</h1>
+    <!-- 네비게이션 메뉴 -->
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="github.html">GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 본문 영역 -->
+  <main class="page-main">
+    <!-- 연락 섹션 -->
+    <section class="page-panel">
+      <h2 class="page-title">Contact</h2>
+      
+      <!-- 연락 정보와 폼을 나누는 영역 -->
+      <div class="contact-layout">
+        <!-- 기본 연락 정보 -->
+        <article class="content-card contact-card lift-card accent-left info-card">
+          <h3>Contact Information</h3>
+
+          <!-- 연락 정보 목록 -->
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <h4>📧 Email</h4>
+              <p>luckdaniel@seoultech.ac.kr</p>
+            </div>
+
+            <div class="contact-info-item">
+              <h4>📱 Phone</h4>
+              <p>010-6220-8271</p>
+            </div>
+
+            <div class="contact-info-item">
+              <h4>📍 Address</h4>
+              <p>Gongneung-dong, Nowon District, Seoul</p>
+            </div>
+
+            <div class="contact-info-item instagram-item">
+              <h4>📷 Instagram</h4>
+              <p>@gunu_zello</p>
+              <!-- 인스타그램 프로필 링크 -->
+              <a class="pill-link instagram-link" href="https://www.instagram.com/gunu_zello/" target="_blank" rel="noopener noreferrer">
+                Visit Instagram
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 메시지 입력 폼 -->
+        <article class="content-card contact-card accent-top form-card">
+          <h3>Send a Message</h3>
+          <!-- action은 폼 전송 위치, #은 현재 페이지 유지 -->
+          <!-- method는 전송 방식 -->
+          <form class="contact-form" action="#" method="post">
+            <!-- 입력칸 한 묶음 -->
+            <div class="form-group">
+              <!-- label은 입력칸 제목 -->
+              <!-- for 값은 아래 input의 id와 연결 -->
+              <label for="name">Name</label>
+              <!-- input은 한 줄 입력칸 -->
+              <!-- type은 입력 종류 -->
+              <!-- id는 label과 연결할 때 사용 -->
+              <!-- name은 폼 데이터 이름 -->
+              <!-- placeholder는 입력 예시 문구 -->
+              <input type="text" id="name" name="name" placeholder="Enter your name">
+            </div>
+
+            <!-- 입력칸 한 묶음 -->
+            <div class="form-group">
+              <!-- 이메일 입력칸 -->
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+
+            <!-- 입력칸 한 묶음 -->
+            <div class="form-group">
+              <!-- 여러 줄 입력칸 -->
+              <label for="message">Message</label>
+              <!-- textarea는 긴 문장을 입력할 때 사용 -->
+              <!-- rows는 기본 높이 줄 수 -->
+              <textarea id="message" name="message" rows="6" placeholder="Write your message"></textarea>
+            </div>
+
+            <!-- 폼 제출 버튼 -->
+            <button class="contact-button" type="submit">Send</button>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- 하단 영역 -->
+  <footer>
+    <p>&copy; 2026 Gunwoo Kim</p>
+  </footer>
+</body>
+</html>

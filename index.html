@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 문자 인코딩 설정 -->
+  <meta charset="UTF-8">
+  <!-- 모바일 화면 크기 대응 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 브라우저 탭 제목 -->
+  <title>Home | Gunwoo Kim Portfolio</title>
+  <!-- CSS 파일 연결 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<!-- 홈 화면 전용 클래스 지정 -->
+<body class="home-page">
+    <!-- 공통 상단 영역 -->
+    <header class="site-header">
+      <!-- 메인 제목 -->
+      <h1>KIM GUNWOO - PORTFOLIO</h1>
+      <!-- 네비게이션 메뉴 -->
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="github.html">GitHub</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- 본문 영역 -->
+    <main class="home-main">
+      <!-- 자기소개 섹션 -->
+      <section class="home-intro">
+        <!-- 텍스트와 사진을 나누는 영역 -->
+        <div class="home-content">
+          <!-- 소개 글 영역 -->
+          <div class="about-text">
+            <h2>About Me</h2>
+            <!-- 소개 문단 -->
+            <p class="intro-text">
+              I am currently a third-year student majoring in <strong>IT Management</strong> at <strong>Seoul National University of Science and Technology</strong>.
+              I am also participating in a <strong>dual degree</strong> program with <strong>Northumbria University</strong> in the United Kingdom.
+            </p>
+            <p class="intro-text">
+              <!-- strong은 중요한 단어나 표현을 조금 더 강조할 때 사용 -->
+              As the 15th <strong>Student Council President</strong> of the ITM department, I am doing my best to carry out my responsibilities.
+              I am also a member of <strong>GDGoC</strong>, where I am studying backend development with great interest.
+              In addition, I am a member of <strong>Coala</strong>, a student-led coding club in our department, and I actively participate in several support communities.
+            </p>
+          </div>
+
+          <!-- 프로필 사진 영역 -->
+          <div class="photo-space" aria-label="Profile photo placeholder">
+            <!-- 프로필 사진 프레임 -->
+            <div class="photo-frame">
+              <!-- 실제 프로필 사진 -->
+              <!-- src는 불러올 이미지 파일 경로 -->
+              <!-- alt는 이미지 설명 문구 -->
+              <img src="image/kgw_profile.jpg" alt="Profile photo of Kim Gunwoo">
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  <!-- 하단 영역 -->
+  <footer>
+    <p>&copy; 2026 Gunwoo Kim</p>
+  </footer>
+</body>
+</html>
